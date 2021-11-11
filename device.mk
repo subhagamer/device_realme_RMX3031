@@ -171,6 +171,10 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
 
+# Symbols
+PRODUCT_PACKAGES += \
+    libshim_vtservice
+
 # Telephony
 PRODUCT_BOOT_JARS += \
     mediatek-common \
@@ -180,6 +184,9 @@ PRODUCT_BOOT_JARS += \
     mediatek-telecom-common \
     mediatek-telephony-base \
     mediatek-telephony-common
+
+PRODUCT_PACKAGES += \
+    ImsServiceBase
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
