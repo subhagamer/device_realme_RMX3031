@@ -15,3 +15,13 @@ allow init proc_cpufreq:file { w_file_perms setattr };
 
 # Allow init to set smart charging and USB
 allow init sysfs_battery_supply:file { setattr };
+
+# Define some denials from realme parts
+type sysfs_disp_hbm, sysfs_type, fs_type;
+type sysfs_graphics_ffl, sysfs_type, fs_type;
+
+# Allow init to write to LCM_CABC nodes
+allow init sysfs:file { read open write getattr };
+
+# Allow init to write to Vibration strength node
+allow init sysfs_vibrator:file { read open write getattr };
