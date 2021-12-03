@@ -22,10 +22,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/realme/RMX3031/device.mk)
 
 # Inherit some common Pixel-Experience stuff.
-$(call inherit-product, vendor/ancient/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := ancient_RMX3031
+PRODUCT_NAME := aosp_RMX3031
 PRODUCT_DEVICE := RMX3031
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := Realme X7 Max 5G
@@ -33,13 +33,14 @@ PRODUCT_MANUFACTURER := realme
 
 # Gapps
 TARGET_GAPPS_ARCH := arm64
-IS_PHONE := true
-ANCIENT_GAPPS := true
 
 # Official-ify
-ANCIENT_OFFICIAL := true
-FORCE_LAWNCHAIR := true
-INCLUDE_MIXPLORER := true
+Elixir_MAINTAINER := NishantKumar6342
+IS_PHONE := true
+CUSTOM_BUILD_TYPE := OFFICIAL
+TARGET_SUPPORTS_GOOGLE_RECORDER := false
+TARGET_INCLUDE_STOCK_ACORE := false
+TARGET_INCLUDE_LIVE_WALLPAPERS := false
 TARGET_BOOT_ANIMATION_RES := 1080
 
 
