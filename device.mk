@@ -176,13 +176,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshim_vtservice
 
-# Telephony
-PRODUCT_PACKAGES += \
-    ImsServiceBase
-
-PRODUCT_BOOT_JARS += \
-    ImsServiceBase
-
 # Wi-Fi
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
