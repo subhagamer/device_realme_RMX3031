@@ -30,6 +30,7 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Call proprietary blob setup
 $(call inherit-product, vendor/realme/RMX3031/RMX3031-vendor.mk)
 $(call inherit-product, vendor/realme/IMS-RMX3031/mtk-ims.mk)
+$(call inherit-product, vendor/realme/firmware-RMX3031/Android.mk)
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true

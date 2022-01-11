@@ -36,13 +36,32 @@ def AddImage(info, basename, dest):
   data = info.input_zip.read("IMAGES/" + basename)
   common.ZipWriteStr(info.output_zip, name, data)
   info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
+  
+def AddImageRadio(info, basename, dest):
+  name = basename
+  data = info.input_zip.read("RADIO/" + basename)
+  common.ZipWriteStr(info.output_zip, name, data)
+  if dest: # Dont append any line in updater-script if dest is not supplied to this definition
+    info.script.AppendExtra('package_extract_file("%s", "%s");' % (name, dest))
 
 def OTA_InstallEnd(info):
+# Adding vendor,odm and logo to zip and will flash it
+  AddImageRadio(info, "dynamic-resize", "")
+  AddImageRadio(info, "odm.new.dat.br", "")
+  AddImageRadio(info, "odm.patch.dat", "")
+  AddImageRadio(info, "odm.transfer.list", "")
+  AddImageRadio(info, "vendor.new.dat.br", "")
+  AddImageRadio(info, "vendor.patch.dat", "")
+  AddImageRadio(info, "vendor.transfer.list", "")
+  AddImageRadio(info, "logo.bin", "")
+  info.script.Print("Patching odm image unconditionally...")
+  info.script.AppendExtra('assert(update_dynamic_partitions(package_extract_file("dynamic-resize")));')
+  info.script.AppendExtra('block_image_update(map_partition("odm"), package_extract_file("odm.transfer.list"), "odm.new.dat.br", "odm.patch.dat") || abort("E2001: Failed to update odm image.");')
+  info.script.Print("Patching vendor image unconditionally...")
+  info.script.AppendExtra('block_image_update(map_partition("vendor"), package_extract_file("vendor.transfer.list"), "vendor.new.dat.br", "vendor.patch.dat") || abort("E2001: Failed to update vendor image.");')
   info.script.Print("Patching firmware images...")
   AddImage(info, "dtbo.img", "/dev/block/by-name/dtbo")
   AddImage(info, "vbmeta.img", "/dev/block/by-name/vbmeta")
   AddImage(info, "vbmeta_system.img", "/dev/block/by-name/vbmeta_system")
-  data = info.input_zip.read("RADIO/logo.bin")
-  common.ZipWriteStr(info.output_zip, "logo.bin", data)
   info.script.AppendExtra('package_extract_file("logo.bin", "/dev/block/by-name/logo");')
   return
