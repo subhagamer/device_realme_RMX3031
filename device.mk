@@ -105,6 +105,11 @@ PRODUCT_PACKAGES += \
     RcsService \
     PresencePolling
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@2.0-service.RMX3031 \
+    vendor.qti.hardware.display.mapper@1.1.vendor
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
