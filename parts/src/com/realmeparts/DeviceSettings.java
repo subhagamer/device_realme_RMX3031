@@ -71,8 +71,6 @@ public class DeviceSettings extends PreferenceFragment
     public static TwoStatePreference mResetStats;
     public static TwoStatePreference mRefreshRate120Forced;
     private static TwoStatePreference mDT2WModeSwitch;
-    public static RadioButtonPreference mRefreshRate120;
-    public static RadioButtonPreference mRefreshRate60;
     public static SeekBarPreference mSeekBarPreference;
     public static DisplayManager mDisplayManager;
     private static NotificationManager mNotificationManager;
@@ -152,14 +150,6 @@ public class DeviceSettings extends PreferenceFragment
         mRefreshRate120Forced.setChecked(prefs.getBoolean("refresh_rate_120Forced", false));
         mRefreshRate120Forced.setOnPreferenceChangeListener(new RefreshRateSwitch(getContext()));
 
-        mRefreshRate120 = findPreference("refresh_rate_120");
-        mRefreshRate120.setChecked(RefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
-        mRefreshRate120.setOnPreferenceChangeListener(new RefreshRateSwitch(getContext()));
-
-        mRefreshRate60 = findPreference("refresh_rate_60");
-        mRefreshRate60.setChecked(!RefreshRateSwitch.isCurrentlyEnabled(this.getContext()));
-        mRefreshRate60.setOnPreferenceChangeListener(new RefreshRateSwitch(getContext()));
-
         mCABC = (SecureSettingListPreference) findPreference(KEY_CABC);
         mCABC.setValue(Utils.getStringProp(CABC_SYSTEM_PROPERTY, "0"));
         mCABC.setSummary(mCABC.getEntry());
@@ -179,15 +169,7 @@ public class DeviceSettings extends PreferenceFragment
         mVibStrength.setValue(Utils.getStringProp(VIB_STRENGTH_SYSTEM_PROPERTY, "0"));
         mVibStrength.setSummary(mVibStrength.getEntry());
         mVibStrength.setOnPreferenceChangeListener(this);
-
-        // Few checks to enable/disable options when activity is launched
-        if ((prefs.getBoolean("refresh_rate_120", false) && prefs.getBoolean("refresh_rate_120Forced", false))) {
-            mRefreshRate60.setEnabled(false);
-            mRefreshRate120.setEnabled(false);
-        } else if ((prefs.getBoolean("refresh_rate_60", false))) {
-            mRefreshRate120Forced.setEnabled(false);
-        }
-
+        mVibrator = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
         isCoolDownAvailable();
         DisplayRefreshRateModes();
         try {
@@ -195,22 +177,6 @@ public class DeviceSettings extends PreferenceFragment
         } catch (Exception e) {
             Log.d("DeviceSettings", e.toString());
         }
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        if (preference == mRefreshRate120) {
-            mRefreshRate60.setChecked(false);
-            mRefreshRate120.setChecked(true);
-            mRefreshRate120Forced.setEnabled(true);
-            return true;
-        } else if (preference == mRefreshRate60) {
-            mRefreshRate60.setChecked(true);
-            mRefreshRate120.setChecked(false);
-            mRefreshRate120Forced.setEnabled(false);
-            return true;
-        }
-        return super.onPreferenceTreeClick(preference);
     }
 
     @Override
