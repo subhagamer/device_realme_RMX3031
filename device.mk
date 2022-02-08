@@ -23,7 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Parts
-$(call inherit-product-if-exists, packages/apps/RealmeParts/parts.mk)
+$(call inherit-product-if-exists, $(DEVICE_PATH)/parts/parts.mk)
 
 PRODUCT_SHIPPING_API_LEVEL := 30
 
@@ -104,6 +104,11 @@ PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
     RcsService \
     PresencePolling
+
+#Realme Parts
+PRODUCT_PACKAGES += \
+   RealmeParts \
+   parts.rc
 
 # Sensors
 PRODUCT_PACKAGES += \
