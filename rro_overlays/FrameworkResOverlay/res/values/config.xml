@@ -187,13 +187,10 @@
      <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
 
     <!-- Fast brightness animation ramp rate in brightness units per second-->
-    <integer name="config_brightness_ramp_rate_fast">308</integer>
+    <integer name="config_brightness_ramp_rate_fast">160</integer>
 
     <!-- Slow brightness animation ramp rate in brightness units per second-->
-    <integer name="config_brightness_ramp_rate_slow">60</integer>
-
-    <!-- Whether device supports double tap to wake -->
-    <bool name="config_supportDoubleTapWake">true</bool>
+    <integer name="config_brightness_ramp_rate_slow">50</integer>
 
     <!-- Set to true if the wifi display supports compositing content stored
          in gralloc protected buffers.  For this to be true, there must exist
@@ -247,8 +244,8 @@
          when adapting to brighter or darker environments.  This parameter controls how quickly
          brightness changes occur in response to an observed change in light level that exceeds the
          hysteresis threshold. -->
-    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
-    <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
+    <integer name="config_autoBrightnessBrighteningLightDebounce">3000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">350</integer>
 
     <!-- User activity timeout: Maximum screen dim duration in milliseconds.
          Sets an upper bound for how long the screen will dim before the device goes
@@ -307,6 +304,7 @@
         <item>1480</item>
         <item>2250</item>
         <item>3300</item>
+	<item>7500</item>
         <item>10000</item>
     </integer-array>
     <integer-array name="config_autoBrightnessLuxMaxLimit">
@@ -314,8 +312,9 @@
         <item>150</item>
         <item>1150</item>
         <item>1900</item>
-        <item>2800</item>
-        <item>4000</item>
+        <item>3000</item>
+        <item>8000</item>
+	<item>15000</item>
         <item>80000</item>
     </integer-array>
 

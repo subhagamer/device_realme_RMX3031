@@ -35,7 +35,7 @@ PRODUCT_MANUFACTURER := realme
 TARGET_GAPPS_ARCH := arm64
 
 # Official-ify
-Elixir_MAINTAINER := NishantKumar6342
+Elixir_MAINTAINER := subhagamer
 IS_PHONE := true
 CUSTOM_BUILD_TYPE := OFFICIAL
 TARGET_SUPPORTS_GOOGLE_RECORDER := false
