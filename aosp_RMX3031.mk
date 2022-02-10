@@ -44,7 +44,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-oppo
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_SUPPORTS_QUICK_TAP := true
 
-	# Official-ify
+# Official-ify
 Elixir_MAINTAINER := subhagamer
 IS_PHONE := true
 CUSTOM_BUILD_TYPE := OFFICIAL
