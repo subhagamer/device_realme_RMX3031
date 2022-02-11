@@ -10,3 +10,7 @@ set_prop(system_app, cabc_prop)
 # Allow system_app to set zram prop
 allow system_app sysfs_zram:dir search;
 allow system_app sysfs_zram:file { read open };
+
+# Allow system_app to set vib strength
+set_prop(system_app, vib_strength)
+allow system_app vib_strength:property_service set;

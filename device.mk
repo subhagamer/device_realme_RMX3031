@@ -75,8 +75,10 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     init.mt6893.rc \
+    init.realmeparts.rc \
     fstab.mt6893 \
-    perf_profile.sh
+    perf_profile.sh \
+    init.realmeparts.sh
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
