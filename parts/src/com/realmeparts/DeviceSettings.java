@@ -84,10 +84,10 @@ public class DeviceSettings extends PreferenceFragment
     private TwoStatePreference mOTGModeSwitch;
     private TwoStatePreference mGameModeSwitch;
     private TwoStatePreference mSmartChargingSwitch;
-    private boolean CABC_DeviceMatched;
-    private boolean DC_DeviceMatched;
-    private boolean HBM_DeviceMatched;
-    private boolean sRGB_DeviceMatched;
+    private boolean CABC_DeviceMatched=true;
+    private boolean DC_DeviceMatched=true;
+    private boolean HBM_DeviceMatched=true;
+    private boolean sRGB_DeviceMatched=true;
     private SecureSettingListPreference mCABC;
 	private SecureSettingListPreference mPerfProfile;
 
@@ -280,28 +280,12 @@ public class DeviceSettings extends PreferenceFragment
             }
         }
 
-        // Remove CABC preference if device is unsupported
-        if (!CABC_DeviceMatched) {
-            mPreferenceCategory.removePreference(findPreference(KEY_CABC));
-            prefs.edit().putBoolean("CABC_DeviceMatched", false).apply();
-        } else prefs.edit().putBoolean("CABC_DeviceMatched", true).apply();
+         prefs.edit().putBoolean("CABC_DeviceMatched", true).apply();
 
-        // Remove DC-Dimming preference if device is unsupported
-        if (!DC_DeviceMatched) {
-            mPreferenceCategory.removePreference(findPreference(KEY_DC_SWITCH));
-            prefs.edit().putBoolean("DC_DeviceMatched", false).apply();
-        } else prefs.edit().putBoolean("DC_DeviceMatched", true).apply();
+         prefs.edit().putBoolean("DC_DeviceMatched", true).apply();
 
-        // Remove HBM preference if device is unsupported
-        if (!HBM_DeviceMatched) {
-            mPreferenceCategory.removePreference(findPreference(KEY_HBM_SWITCH));
-            prefs.edit().putBoolean("HBM_DeviceMatched", false).apply();
-        } else prefs.edit().putBoolean("HBM_DeviceMatched", true).apply();
+         prefs.edit().putBoolean("HBM_DeviceMatched", true).apply();
 
-        // Remove sRGB preference if device is unsupported
-        if (!sRGB_DeviceMatched) {
-            mPreferenceCategory.removePreference(findPreference(KEY_SRGB_SWITCH));
-            prefs.edit().putBoolean("sRGB_DeviceMatched", false).apply();
-        } else prefs.edit().putBoolean("sRGB_DeviceMatched", true).apply();
+         prefs.edit().putBoolean("sRGB_DeviceMatched", true).apply();
     }
 }
