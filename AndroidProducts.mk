@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/radiant_RMX3031.mk
+    $(LOCAL_DIR)/lighthouse_RMX3031.mk
