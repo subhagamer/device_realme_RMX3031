@@ -22,27 +22,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/realme/RMX3031/device.mk)
 
 # Inherit some common Pixel-Experience stuff.
-$(call inherit-product, vendor/radiant/config/common_full_phone.mk)
+$(call inherit-product, vendor/lighthouse/config/common_full_phone.mk)
+
+# Boot Animation
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := radiant_RMX3031
+PRODUCT_NAME := lighthouse_RMX3031
 PRODUCT_DEVICE := RMX3031
 PRODUCT_BRAND := realme
 PRODUCT_MODEL := Realme X7 Max 5G
 PRODUCT_MANUFACTURER := realme
-
-# Radiant Stuff
-RADIANT_BUILD_TYPE := UNOFFICIAL
-TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_SUPPORTS_QUICK_AP := true
-PRODUCT_PRODUCT_PROPERTIES += \
-ro.radiant.cpu=mt6893
 
-# Build info
-BUILD_FINGERPRINT := "alps/vnd_oppo6893/oppo6893:11/RP1A.200720.011/mp2tc16sppr5V1:user/release-keys"
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=RMX3031 \
-    PRODUCT_NAME=RMX3031 \
-    PRIVATE_BUILD_DESC="sys_oplus_mssi_64_cn-user-11-RP1A.200720.011-mp2tc16sppr5V1-release-keys"
+BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.210905.001/7511028:user/release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-oppo
