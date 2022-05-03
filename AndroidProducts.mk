@@ -16,3 +16,7 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lighthouse_RMX3031.mk
+COMMON_LUNCH_CHOICES := \
+    lighthouse_RMX3031-userdebug \
+    lighthouse_RMX3031-user \
+    lighthouse_RMX3031-eng
