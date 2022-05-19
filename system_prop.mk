@@ -2,10 +2,6 @@
 PRODUCT_PROPERTY_OVERRIDES += \
      persist.bluetooth.bluetooth_audio_hal.disabled=true
 
-# Blurs
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.surface_flinger.supports_background_blur=1
-
 # Fingerprint
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.boot.realme.lockstate=0
@@ -55,3 +51,38 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.volume.filenames_mode=aes-256-cts \
     ro.crypto.volume.metadata.method=dm-default-key \
     ro.crypto.volume.options=::v2
+
+# Chipset
+ro.soc.manufacturer=Mediatek
+ro.soc.model=MT6893
+# Iorap
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.device_config.runtime_native_boot.iorap_readahead_enable=true
+
+#AOD
+debug.force_no_blanking=true
+
+# Blurs
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=1
+
+# Pre-rendering
+ro.vendor.perf.scroll_opt=true
+
+# Venom
+ro.surface_flinger.running_without_sync_framework=true
+
+# DHA Tunning
+ro.config.dha_tunnable=1
+
+# Smoothens UI
+persist.service.lgospd.enable=0
+persist.service.pcsync.enable=0
+
+# Disable blur on app launch
+ro.launcher.blur.appLaunch=0
+
+# Display HDR
+ro.surface_flinger.use_color_management=true
+ro.surface_flinger.has_wide_color_display=true
+ro.surface_flinger.has_HDR_display=true
