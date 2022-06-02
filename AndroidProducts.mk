@@ -15,4 +15,10 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/radiant_RMX3031.mk
+    $(LOCAL_DIR)/cipher_RMX3031.mk
+
+
+COMMON_LUNCH_CHOICES := \
+      cipher_RMX3031-userdebug
+
+
