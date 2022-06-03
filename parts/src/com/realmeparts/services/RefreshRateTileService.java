@@ -54,7 +54,7 @@ public class RefreshRateTileService extends TileService {
         enabled = RefreshRateSwitch.isCurrentlyEnabled(this);
         RefreshRateSwitch.setPeakRefresh(this, enabled);
         getQsTile().setIcon(Icon.createWithResource(this,
-                GetSmoothDisplay() ? R.drawable.refresh_rate_120forced_icon : (enabled ? R.drawable.ic_refresh_tile_120 : R.drawable.ic_refresh_tile_60)));
+                GetSmoothDisplay() ? R.drawable.refresh_rate_120forced_icon :  R.drawable.ic_refresh_tile_60));
         getQsTile().setState(GetSmoothDisplay() ? Tile.STATE_ACTIVE : (enabled ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE));
         getQsTile().setLabel(GetSmoothDisplay() ? "Smooth Display" : "Refresh Rate");
 
@@ -89,7 +89,7 @@ public class RefreshRateTileService extends TileService {
         }
         getQsTile().setLabel(sharedPrefs.getBoolean("refresh_rate_90Forced", false) ? "Smooth Display" : "Refresh Rate");
         getQsTile().setIcon(Icon.createWithResource(this,
-                sharedPrefs.getBoolean("refresh_rate_120Forced", false) ? R.drawable.refresh_rate_120forced_icon : (enabled ? R.drawable.ic_refresh_tile_60 : R.drawable.ic_refresh_tile_120)));
+                sharedPrefs.getBoolean("refresh_rate_120Forced", false) ? R.drawable.refresh_rate_120forced_icon : R.drawable.ic_refresh_tile_60));
         getQsTile().setState(sharedPrefs.getBoolean("refresh_rate_120Forced", false) ? Tile.STATE_ACTIVE : (enabled ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE));
         getQsTile().updateTile();
     }
